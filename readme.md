@@ -78,7 +78,7 @@ $ docker rm <container id>
 ## 🙍🏻‍♂️ Adding non-root user 
 ![non-root](assets/add_non-root_user.png)
 ```bash
-$ sudo apt update && sudp apt upgrade -y
+$ sudo apt update && sudo apt upgrade -y
 
 # option 1:
 $ adduser l0n3m4n
