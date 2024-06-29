@@ -51,7 +51,7 @@ $ sudo apt update && sudo apt install -y kali-linux-default
 kali@l0n3m4n:~$ sudo apt update && sudo apt install -y install kali-linux-headless
 ```
 ### Step By Step Installation (Without error's)
-Goto ![Installation Guide](assets/installation_guide/readme.md) for more details. 
+Goto ![Installation Guide](./assets/installation_guide/readme.md) for more details. 
 
 
 ### Starting Docker Kali Image
