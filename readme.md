@@ -140,9 +140,9 @@ If you've used 100% of the included services for GitHub Codespaces storage, a fe
 
 1. Inability to Use Codespaces: You won't be able to create or use GitHub Codespaces until either your `free allotment resets next month` or you take action to manage your usage.
 2. Options to Regain Access:
-  - Set Up a Spending Limit: You can set up a `spending limit` on your GitHub account to prevent unexpected charges and manage your usage effectively.
-  - Delete Unused Resources: Consider `deleting Codespaces` or `prebuilds` that are no longer needed to free up space and potentially reduce future charges.
-  - Wait for Monthly Reset: If your account includes a free monthly allotment that `resets`, you may regain access to Codespaces once the reset occurs.
+    - Set Up a Spending Limit: You can set up a `spending limit` on your GitHub account to prevent unexpected charges and manage your usage effectively.
+    - Delete Unused Resources: Consider `deleting Codespaces` or `prebuilds` that are no longer needed to free up space and potentially reduce future charges.
+    - Wait for Monthly Reset: If your account includes a free monthly allotment that `resets`, you may regain access to Codespaces once the reset occurs.
 3. Access to In-Progress Work: It's important to `export` any unpushed work to a branch if you want to retain access to your in-progress projects. This ensures you have a backup and can continue working on them when you regain access to Codespaces.
 4. Review Usage and Charges: GitHub provides a `usage report` where you can see detailed information about your Codespaces and prebuild usage. This can help you understand your usage patterns and manage future usage effectively.
 ---
