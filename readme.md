@@ -5,7 +5,7 @@
 </div>
 
 # Github VPS  
-## Free VPS over Github codespace (Ubuntu  22.04 AZURE) 
+## Free VPS via Github codespace (Ubuntu 22.04 AZURE) 
 ![neofetch](assets/neofetch.png)
 
 ## 📜 Description 
