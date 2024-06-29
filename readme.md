@@ -23,6 +23,7 @@ GitHub Codespaces allows developers and hackers to create and utilize their codi
 - 💁 [References](#-references)
 - 📌 [Author](#-author)
 - 👨🏾‍⚖️ [License](#-license)
+-  📊 [Github Status](#-github-status)
  
 ## 🔥 Whats Nice
 - Offers more power with 2 vCPUs, 8 GB RAM, and a temporary 32GB SSD storage drive.
@@ -172,4 +173,7 @@ If you've used 100% of the included services for GitHub Codespaces storage, a fe
 
 ## 👨🏾‍⚖️ License
 This project is under terms of the [MIT License](LICENSE). For fixing Bugs, create [issue](https://github.com/l0n3m4n/github-vps/issues/new)
+
+## 📊 Github Status
+![Alt](https://repobeats.axiom.co/api/embed/978a846edd6cdea3db9e29b9e7033dbc4d9e92bb.svg "Repobeats analytics image")
 
