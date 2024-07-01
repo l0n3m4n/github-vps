@@ -47,10 +47,12 @@ kali@l0n3m4n:~$ docker run --privileged -it kalilinux/kali-rolling /bin/bash
 kali@l0n3m4n:~$ docker run --tty --interactive kalilinux/kali-rolling
 
 # Option 1: (Recommended)
-$ sudo apt update && sudo apt install -y kali-linux-default
+┌──(root㉿kali)-[~]
+└─# apt update && apt install -y kali-linux-default
 
 # Option 2: Installing metapackages
-kali@l0n3m4n:~$ sudo apt update && sudo apt install -y install kali-linux-headless
+┌──(root㉿kali)-[~]
+└─#  apt update && apt install -y install kali-linux-headless
 ```
 ### Step By Step Installation (Without error's)
 Goto ![Installation Guide](./assets/installation_guide/readme.md) for more details. 
