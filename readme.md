@@ -70,7 +70,7 @@ $ docker ps -a
 # Rename docker name
 $ docker rename <current_name> <new_name>
 
-# A detailed information about the container configuration and status and etc. 
+# Detailed information about the container configuration, status and etc. 
 $ docker inspect <container id>
 
 # Start kali image
@@ -108,7 +108,6 @@ $ su - l0n3m4n
 
 # verify
 $ whoami
-$ sudo whoami
 ```
 
 ## 🗃️ Diskspace Monitoring 
@@ -132,7 +131,7 @@ By default, Docker containers do not have access to TUN/TAP devices on the host 
 $ docker run --privileged -it kalilinux/kali-rolling /bin/bash
 
 # Option 2: Use --device Flag (More Secure)
-# A more secure approach is to use the --device flag to explicitly map the TUN/TAP device from the host into the # # # container. This approach is more controlled and limits access to only the necessary device.
+# A more secure approach is to use the --device flag to explicitly map the TUN/TAP device from the host into the container. This approach is more controlled and limits access to only the necessary device.
 $ docker run --device=/dev/net/tun:/dev/net/tun -it kalilinux/kali-rolling /bin/bash
 
 # Verify TUN/TAP Functionality Inside the Container
