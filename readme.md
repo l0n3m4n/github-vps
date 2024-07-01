@@ -46,12 +46,16 @@ kali@l0n3m4n:~$ docker run --privileged -it kalilinux/kali-rolling /bin/bash
 # Option 2: Interactive mode
 kali@l0n3m4n:~$ docker run --tty --interactive kalilinux/kali-rolling
 
-# Option 1: (Recommended)
-┌──(root㉿kali)-[~]
+# Key differences between kali-linux-default VS. kali-linux-headless
+
+# Option 1: (Recommended) 
+# Default - Kali Linux "default" refers to the standard installation of Kali Linux that includes a "graphical desktop environment" (typically GNOME).
+┌──(root㉿indentifier)-[~]
 └─# apt update && apt install -y kali-linux-default
 
-# Option 2: Installing metapackages
-┌──(root㉿kali)-[~]
+# Option 2: Headless - Kali Linux headless refers to an installation of Kali Linux that does "not include a graphical desktop environment".
+# It operates entirely through the command line interface (CLI). 
+┌──(root㉿identifier)-[~]
 └─#  apt update && apt install -y install kali-linux-headless
 ```
 ### Step By Step Installation (Without error's)
@@ -65,6 +69,9 @@ $ docker ps -a
 
 # Rename docker name
 $ docker rename <current_name> <new_name>
+
+# A detailed information about the container configuration and status and etc. 
+$ docker inspect <container id>
 
 # Start kali image
 $ docker start <container id> (e.q) d36922fa21e8
