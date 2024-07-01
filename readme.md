@@ -35,7 +35,7 @@ GitHub Codespaces allows developers and hackers to create and utilize their codi
 
 > Assuming you already in the github codespace terminal
 ---
-![starting_point](assets/starting_point.png)
+![starting](assets/starting.png)
 ```bash
 # pulling images 
 kali@l0n3m4n:~$ docker pull docker.io/kalilinux/kali-rolling
