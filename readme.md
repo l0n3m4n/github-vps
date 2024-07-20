@@ -178,4 +178,4 @@ If you've used 100% of the included services for GitHub Codespaces storage, a fe
 - [ ] **Adding Openvpn default configuration to ensure privacy and security**
 
 ## 👨🏾‍⚖️ License
-This project is under terms of the [MIT License](LICENSE). For fixing Bugs, create [issue](https://github.com/l0n3m4n/github-vps/issues/new)
+This project is under terms of the [MIT License](LICENSE). bugs and error, create [issue](https://github.com/l0n3m4n/github-vps/issues/new)
