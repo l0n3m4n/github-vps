@@ -32,7 +32,7 @@ GitHub Codespaces allows developers and hackers to create and utilize their codi
 ## 📚 Table of Contents
 - 📜 [Description](#-description)
 - 🔥 [What's Nice](#whats-nice)
-- 🐳 [Docker Installation](#-docker-installation)
+- 🐳 [Installation](#-installation)
 - 🙍🏻‍♂️ [Configuration](#-configuration)
 - 🚫 [Temporarily Disabled](#-temporarily-disabled)
 - 👨🏾‍⚖️ [License](#-license)
@@ -43,7 +43,7 @@ GitHub Codespaces allows developers and hackers to create and utilize their codi
 - Higher performance with `4-vCPUs`, `16GB-RAM`, and a temporary `32GB-SSD` storage drive.
 ![machine_type](assets/machine_type.png)
 
-### 🐳 Docker Installation
+### 🐳 Installation
 
 > [!NOTE] 
 > Github codespace terminal
