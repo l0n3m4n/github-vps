@@ -1,5 +1,5 @@
 <h1 align="center">
-  Github-VPS (FREE) 
+  Github-VPS
 </h1>
 <p align="center">
     <a href="https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fl0n3m4n%2Fgithub-vps">
