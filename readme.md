@@ -46,7 +46,7 @@ GitHub Codespaces allows developers and hackers to create and utilize their codi
 ### 🐳 Installation
 
 > [!NOTE] 
-> [Github codespace terminal] (https://docs.github.com/en/codespaces/developing-in-a-codespace/using-github-codespaces-with-github-cli)
+> [Github codespace terminal](https://docs.github.com/en/codespaces/developing-in-a-codespace/using-github-codespaces-with-github-cli)
 ---
 ![starting](assets/starting.png)
 ```bash
