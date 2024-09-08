@@ -61,7 +61,7 @@ $ docker run --tty --interactive kalilinux/kali-rolling
  
 $ apt update && apt install -y kali-linux-default
 
-$ apt update && apt install -y install kali-linux-headless
+$ apt update && apt install -y kali-linux-headless
 ```
 ### Installation without errors
 > [!TIP]
