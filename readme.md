@@ -157,7 +157,7 @@ $ docker run --device=/dev/net/tun:/dev/net/tun -it kalilinux/kali-rolling /bin/
 # Verify TUN/TAP Functionality Inside the Container
 $ ls -l /dev/net/tun
 ```
-### Automation Docker Privileged
+### Automation in new terminal session 
 > kali_privs.sh
 ```sh
 #!/bin/bash
