@@ -99,19 +99,31 @@ $ docker rm <container id>
 $ sudo apt update && sudo apt upgrade -y
 
 # option 1:
-$ adduser l0n3m4n
+# To add a new user:
+$ sudo adduser l0n3m4n
 
 # option 2:
-$ useradd -m -s /bin/bash l0n3m4n
+# Set a Default Shell
+$ sudo useradd -m -s /bin/bash l0n3m4n
 
+# Add User to Groups
+$ sudo usermod -aG sudo username
+
+# Set a Password for the User
+$ sudo passwd username
+
+# Verify User Creation
+grep username /etc/passwd
+
+# Add user to sudoers
 # option 1: replace to your username
-l0n3m4n ALL=(ALL:ALL) ALL
+username ALL=(ALL:ALL) ALL
 
 # option 2: 
-$  echo "l0n3m4n ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers/l0n3m4n
+$  echo "username ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers/username
 
 # switching to non-root user
-$ su - l0n3m4n
+$ su - username
 
 # verify
 $ whoami
