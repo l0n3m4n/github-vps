@@ -157,6 +157,26 @@ $ docker run --device=/dev/net/tun:/dev/net/tun -it kalilinux/kali-rolling /bin/
 # Verify TUN/TAP Functionality Inside the Container
 $ ls -l /dev/net/tun
 ```
+### Automation Docker Privileged
+> kali_privs.sh
+```sh
+#!/bin/bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+# Checking Kali-linux docker ID
+kali_id=$(docker ps -a -q)
+bash='/bin/bash'
+
+echo -e '${YELLOW}Starting another terminal kali privs${NC}'
+docker start $kali_id
+docker exec -it $kali_id $bash
+echo -e "${YELLOW}Success..${NC}"
+sleep 1.5
+```
 
 ### New Terminal Session
 > [!NOTE]
@@ -169,22 +189,19 @@ $ docker exec -it <container_id> /bin/bash
 > [!IMPORTANT]
 > Run this script in the terminal of your Github Codespace, which is using Ubuntu OS
 
-> setup-noVNC.sh
+> setup-noVNC.sh 
 ```sh
 #!/bin/bash
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
-NC='\033[0m' # No Color
+NC='\033[0m' 
 
-# Function to print error messages and exit
 error_exit() {
     echo -e "${RED}Error: $1${NC}" >&2
     exit 1
 }
-
-# Exit on error
 set -e
 
 echo -e "${GREEN}Starting setup of VNC and noVNC on github codespace terminal...${NC}"
@@ -257,11 +274,6 @@ if [ ! -f "$CERT_FILE" ]; then
     exit 1
 fi
 
-error_exit() {
-    echo -e "${RED}Error: $1${NC}" >&2
-    exit 1
-}
-
 # Start noVNC
 echo -e "${YELLOW} Starting noVNC to enable web-based VNC access...${NC}"
 websockify -D --web="$WEB_DIR" --cert="$CERT_FILE" $LISTEN_PORT localhost:$LOCAL_PORT
@@ -271,7 +283,7 @@ websockify -D --web="$WEB_DIR" --cert="$CERT_FILE" $LISTEN_PORT localhost:$LOCAL
 echo -e "${YELLOW} Starting novncserver${NC}"
 vncserver -geometry 1920x1080
 
-echo "noVNC server started on port $LISTEN_PORT, forwarding to localhost:$LOCAL_PORT"
+echo -e "${GREEN}noVNC server started on port ${WHITE}$LISTEN_PORT${WHITE}, forwarding to localhost:${WHITE}$LOCAL_PORT${NC}"
 
 ```
 ## 🚫 Temporarily Disabled 
