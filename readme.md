@@ -166,11 +166,13 @@ $ docker exec -it <container_id> /bin/bash
 ```
 
 ## Adding Graphical User Interface (noVNC)
+> [!IMPORTANT]
+> Run this script in the terminal of your Github Codespace, which is using Ubuntu OS
+
 > setup-noVNC.sh
 ```sh
 #!/bin/bash
 
-# Color codes
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
