@@ -58,11 +58,27 @@ $ docker run --privileged -it kalilinux/kali-rolling /bin/bash
 
 # Option 2: Interactive mode
 $ docker run --tty --interactive kalilinux/kali-rolling
- 
+```
+## Kali headless vs default
+```bash
 $ apt update && apt install -y kali-linux-default
 
 $ apt update && apt install -y install kali-linux-headless
 ```
+- **`kali-linux-default`**: This is a metapackage that installs the default set of tools for a typical Kali Linux system. It includes both GUI and command-line tools that are generally used for penetration testing and security auditing.
+- It is intended for users who want the full range of Kali Linux tools, including the graphical user interface (GUI) tools and a more complete desktop experience.
+  
+- **`kali-linux-headless`**: This is another metapackage, but it installs a more minimal setup. It is intended for users who do not need or want a graphical user interface (GUI). This package installs the core tools needed for penetration testing, but without the overhead of a GUI environment (like X11 or a desktop environment).
+- It’s ideal for servers or systems where you want to run Kali in a headless environment (no monitor, no graphical interface).
+
+#### Key Differences
+- **kali-linux-default** includes the full Kali suite with a GUI.
+- **kali-linux-headless** includes the same core set of tools, but without the GUI, making it lighter and more suitable for headless (non-GUI) environments.
+
+#### Which one to use?
+- If you plan to use Kali Linux with a graphical interface (for example, on a laptop or desktop), go with **kali-linux-default**.
+- If you plan to run Kali on a server or in a virtual machine where you don’t need a GUI, choose **kali-linux-headless** for a more lightweight installation.
+
 ### Installation without errors
 > [!TIP]
 > Refer to default [installation Guide](./assets/installation_guide/readme.md)  
