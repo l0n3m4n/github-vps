@@ -323,7 +323,7 @@ If you've used 100% of the included services for GitHub Codespaces storage, a fe
 ## 📝 Todo
 - [x] **~~Adding remotehost for graphical user inferface (GUI), this includes xrdp, ssh, noVNC and etc.~~**
 - [ ] **Adding Automated builds Dockerfile to ensure consistency and reliability.**
-- [✓] **~~Adding ngrok to exposed your cloud servers behind NATs and firewalls to the public internet over secure tunnels.**~~
+- [x] **~~Adding ngrok to exposed your cloud servers behind NATs and firewalls to the public internet over secure tunnels.**~~
 - [ ] **Adding Openvpn default configuration to ensure privacy and security**
 
 ## 👨🏾‍⚖️ License
