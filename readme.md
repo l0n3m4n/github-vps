@@ -318,7 +318,7 @@ root:*:20107:0:99999:7:::
 # replace "*" to you sha256 hash
 root:$6$t6ABZLPZ204OgZFB$qxD2hNY2rFj5nRBx6ZI9mgrlvCo6EDDjGlLEaoeHwUMbcropNQOKu8OddxTLi5uTsXe13GyFAYYLmy.uUnm9/.:20107:0:99999:7:::
 ```
-### SHH installation and config
+### SSH installation and config
 ```bash
 root㉿434e150c83343:~# apt install ssh
 root㉿434e150c83343:~# apt install openssh-server
