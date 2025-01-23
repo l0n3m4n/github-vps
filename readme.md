@@ -325,10 +325,10 @@ root㉿434e150c83343:~# apt install openssh-server
 ```
 ```bash
 # generating keys
-$ ssh-keygen -t rsa -f ngrok_rsa -b 4096 -C '' -N test@123  
+root㉿434e150c83343:~# ssh-keygen -t rsa -f ngrok_rsa -b 4096 -C '' -N test@123  
 ```
 ```bash
-$ cat ngrok_rsa.pub > /root/.ssh/authorized_keys
+root㉿434e150c83343:~# cat ngrok_rsa.pub > /root/.ssh/authorized_keys
 ```
 
 ### Ngrok Installation and config
