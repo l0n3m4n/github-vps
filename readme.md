@@ -320,14 +320,15 @@ root:$6$t6ABZLPZ204OgZFB$qxD2hNY2rFj5nRBx6ZI9mgrlvCo6EDDjGlLEaoeHwUMbcropNQOKu8O
 ```
 ### SSH installation and config
 ```bash
-root㉿434e150c83343:~# apt install ssh
-root㉿434e150c83343:~# apt install openssh-server
+root㉿434e150c83343:~# service ssh start
+root㉿434e150c83343:~# service ssh status
 ```
 ```bash
 # generating keys
 root㉿434e150c83343:~# ssh-keygen -t rsa -f ngrok_rsa -b 4096 -C '' -N test@123  
 ```
 ```bash
+# If you dont have authorized_keys create one
 root㉿434e150c83343:~# cat ngrok_rsa.pub > /root/.ssh/authorized_keys
 ```
 
