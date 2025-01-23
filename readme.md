@@ -302,7 +302,75 @@ vncserver -geometry 1920x1080
 echo -e "${GREEN}noVNC server started on port ${WHITE}$LISTEN_PORT${WHITE}, forwarding to localhost:${WHITE}$LOCAL_PORT${NC}
 ```
 ## SSH over Ngrok
+### Adding password to root user
+> Github codespace terminal 
+```bash
+# test@123 is my example passwd 
+$ openssl passwd -6
+Password: 
+Verifying - Password: 
+$6$t6ABZLPZ204OgZFB$qxD2hNY2rFj5nRBx6ZI9mgrlvCo6EDDjGlLEaoeHwUMbcropNQOKu8OddxTLi5uTsXe13GyFAYYLmy.uUnm9/.
+```
+```bash
+$ cat /etc/shadow | grep "root"
+root:*:20107:0:99999:7:::
 
+# replace "*" to you sha256 hash
+root:$6$t6ABZLPZ204OgZFB$qxD2hNY2rFj5nRBx6ZI9mgrlvCo6EDDjGlLEaoeHwUMbcropNQOKu8OddxTLi5uTsXe13GyFAYYLmy.uUnm9/.:20107:0:99999:7:::
+```
+### SHH installation and config
+```bash
+root㉿434e150c83343:~# apt install ssh
+root㉿434e150c83343:~# apt install openssh-server
+```
+```bash
+# generating keys
+$ ssh-keygen -t rsa -f ngrok_rsa -b 4096 -C '' -N test@123  
+```
+```bash
+$ cat ngrok_rsa.pub > /root/.ssh/authorized_keys
+```
+
+### Ngrok Installation and config
+> Github codespace terminal
+```bash
+$ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+	| sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+	&& echo "deb https://ngrok-agent.s3.amazonaws.com buster main" \
+	| sudo tee /etc/apt/sources.list.d/ngrok.list \
+	&& sudo apt update \
+	&& sudo apt install ngrok
+```
+```bash
+$ ngrok config add-authtoken <your_authtoken>
+```
+```bash
+$ ngrok tcp 22
+```
+> It should be like this
+```bash
+ngrok                                                                          (Ctrl+C to quit)
+                                                                                               
+🐛 Found a bug? Let us know: https://github.com/ngrok/ngrok                                    
+                                                                                               
+Session Status                online                                                           
+Account                       example@gmail.com (Plan: Paid)                               
+Version                       3.19.0                                                           
+Region                        United States (us)                                               
+Latency                       20ms                                                             
+Web Interface                 http://127.0.0.1:4040                                            
+Forwarding                    tcp://8.tcp.ngrok.io:32325 -> localhost:22                       
+                                                                                               
+Connections                   ttl     opn     rt1     rt5     p50     p90                      
+                              1       1       0.00    0.00    940.60  940.60 
+```
+### Kali terminal
+> copy the private key to your kali termianl for example
+```bash
+$ chmod +x ngrok_rsa
+
+$ ssh -i ngrok_rsa root@8.tcp.ngrok.io -p 32325
+```
 
 ## 🚫 Temporarily Disabled 
 If you've used 100% of the included services for GitHub Codespaces storage, a few things might happen depending on your account settings and actions.
