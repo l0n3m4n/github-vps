@@ -315,7 +315,7 @@ $6$t6ABZLPZ204OgZFB$qxD2hNY2rFj5nRBx6ZI9mgrlvCo6EDDjGlLEaoeHwUMbcropNQOKu8OddxTL
 $ cat /etc/shadow | grep "root"
 root:*:20107:0:99999:7:::
 
-# replace "*" to you sha256 hash
+# replace "*" to your sha256 hash
 root:$6$t6ABZLPZ204OgZFB$qxD2hNY2rFj5nRBx6ZI9mgrlvCo6EDDjGlLEaoeHwUMbcropNQOKu8OddxTLi5uTsXe13GyFAYYLmy.uUnm9/.:20107:0:99999:7:::
 ```
 ### SSH installation and config
