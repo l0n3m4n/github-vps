@@ -299,9 +299,11 @@ websockify -D --web="$WEB_DIR" --cert="$CERT_FILE" $LISTEN_PORT localhost:$LOCAL
 echo -e "${YELLOW} Starting novncserver${NC}"
 vncserver -geometry 1920x1080
 
-echo -e "${GREEN}noVNC server started on port ${WHITE}$LISTEN_PORT${WHITE}, forwarding to localhost:${WHITE}$LOCAL_PORT${NC}"
-
+echo -e "${GREEN}noVNC server started on port ${WHITE}$LISTEN_PORT${WHITE}, forwarding to localhost:${WHITE}$LOCAL_PORT${NC}
 ```
+## SSH over Ngrok
+
+
 ## 🚫 Temporarily Disabled 
 If you've used 100% of the included services for GitHub Codespaces storage, a few things might happen depending on your account settings and actions.
 
