@@ -329,6 +329,7 @@ root㉿434e150c83343:~# ssh-keygen -t rsa -f ngrok_rsa -b 4096 -C '' -N test@123
 ```
 ```bash
 # If you dont have authorized_keys create one
+root㉿434e150c83343:~# touch /root/.ssh/authorized_keys
 root㉿434e150c83343:~# cat ngrok_rsa.pub > /root/.ssh/authorized_keys
 ```
 
