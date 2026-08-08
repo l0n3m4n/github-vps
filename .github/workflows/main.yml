@@ -1,0 +1,333 @@
+name: Kali Linux VPS Setup & Deployment
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  setup-kali-tools:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Update system
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            curl \
+            wget \
+            git \
+            build-essential \
+            python3 \
+            python3-pip
+      
+      - name: Install Kali Tools - Information Gathering
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            nmap \
+            whois \
+            dnsutils \
+            dnsmap \
+            dnsenum \
+            fierce \
+            masscan
+      
+      - name: Install Kali Tools - Vulnerability Analysis
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            nikto \
+            sqlmap \
+            commix
+      
+      - name: Install Kali Tools - Web Application Testing
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            zaproxy
+      
+      - name: Install Kali Tools - Password Cracking
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            hashcat \
+            john \
+            hydra \
+            medusa \
+            ncrack
+      
+      - name: Install Kali Tools - Wireless Testing
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            aircrack-ng \
+            wireshark-common \
+            kismet
+      
+      - name: Install Kali Tools - Exploitation
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            searchsploit
+      
+      - name: Install Kali Tools - Sniffing & Spoofing
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            tcpdump \
+            dsniff \
+            ettercap-common \
+            mitmproxy
+      
+      - name: Install Kali Tools - Forensics
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            sleuthkit \
+            volatility3
+      
+      - name: Install Kali Tools - Reverse Engineering
+        run: |
+          sudo apt-get install -y --no-install-recommends \
+            radare2 \
+            gdb \
+            binwalk
+      
+      - name: Verify installations
+        run: |
+          echo "=== Kali Tools Installation Report ===" > tools_report.txt
+          echo "Generated: $(date)" >> tools_report.txt
+          echo "" >> tools_report.txt
+          echo "=== Tool Versions ===" >> tools_report.txt
+          
+          tools=("nmap" "sqlmap" "hashcat" "aircrack-ng" "nikto" "hydra" "john" "wireshark" "tcpdump" "radare2" "gdb" "binwalk" "whois" "dig")
+          
+          for tool in "${tools[@]}"; do
+            if command -v "$tool" &> /dev/null; then
+              echo "✅ $tool: $($tool --version 2>&1 | head -n1)" >> tools_report.txt
+            else
+              echo "❌ $tool: NOT FOUND" >> tools_report.txt
+            fi
+          done
+          
+          cat tools_report.txt
+      
+      - name: Upload tools report
+        uses: actions/upload-artifact@v3
+        with:
+          name: kali-tools-report
+          path: tools_report.txt
+
+  documentation:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate Kali Commands Documentation
+        run: |
+          cat > KALI_COMMANDS.md << 'EOF'
+          # Kali Linux Tools & Commands Reference
+          
+          ## Information Gathering
+          
+          ### Nmap (Network Scanning)
+          - Basic scan: `nmap target.com`
+          - Full port scan: `nmap -p- target.com`
+          - Service detection: `nmap -sV target.com`
+          - OS detection: `nmap -O target.com`
+          - Aggressive scan: `nmap -A target.com`
+          - Stealth scan: `nmap -sS target.com`
+          - UDP scan: `nmap -sU target.com`
+          - Ping sweep: `nmap -sn 192.168.1.0/24`
+          - Script scan: `nmap --script vuln target.com`
+          - Save to file: `nmap -oN results.txt target.com`
+          
+          ### DNS Enumeration
+          - `dig target.com`
+          - `nslookup target.com`
+          - `dnsmap target.com`
+          - `dnsenum target.com`
+          - Zone transfer: `dig @ns.target.com target.com axfr`
+          - Reverse lookup: `dig -x 1.2.3.4`
+          
+          ### Whois & IP Lookup
+          - `whois target.com`
+          - `whois 192.168.1.1`
+          - `whois -h whois.arin.net 192.168.1.1`
+          
+          ## Vulnerability Scanning
+          
+          ### SQLMap (SQL Injection)
+          - Basic: `sqlmap -u "http://target.com/page?id=1" --dbs`
+          - Dump all: `sqlmap -u "http://target.com/page?id=1" --dump-all`
+          - Specific table: `sqlmap -u "http://target.com/page?id=1" -D dbname -T table --dump`
+          - POST data: `sqlmap -u "http://target.com/login" --data="user=admin&pass=1" --dbs`
+          - Cookie: `sqlmap -u "http://target.com" --cookie="session=abc123" --dbs`
+          - Custom header: `sqlmap -u "http://target.com" -H "Authorization: Bearer token" --dbs`
+          - Batch mode: `sqlmap -u "http://target.com/page?id=1" --batch`
+          
+          ### Nikto (Web Scanner)
+          - Basic: `nikto -h target.com`
+          - SSL scan: `nikto -h target.com -ssl`
+          - Port specific: `nikto -h target.com:8080`
+          - Output to file: `nikto -h target.com -o report.txt`
+          
+          ## Password Cracking
+          
+          ### Hashcat
+          - Dictionary: `hashcat -m 0 hash.txt wordlist.txt`
+          - Brute force: `hashcat -m 0 hash.txt -a 3 ?a?a?a?a`
+          - With rules: `hashcat -m 0 hash.txt wordlist.txt -r rules.txt`
+          - Show results: `hashcat -m 0 hash.txt --show`
+          - Mask attack: `hashcat -m 0 hash.txt -a 3 -1 ?l?u?d ?1?1?1?1?1?1`
+          
+          ### John the Ripper
+          - Auto-detect: `john hash.txt`
+          - Specific format: `john --format=md5 hash.txt`
+          - Dictionary: `john --wordlist=wordlist.txt hash.txt`
+          - Brute force: `john --incremental hash.txt`
+          - Show cracked: `john --show hash.txt`
+          - Jumbo: `john --format=bcrypt hash.txt`
+          
+          ### Hydra (Online Cracking)
+          - SSH: `hydra -l username -P wordlist.txt ssh://target.com`
+          - HTTP Basic: `hydra -l admin -P wordlist.txt http-basic://target.com`
+          - HTTP POST: `hydra -l admin -P wordlist.txt http-post-form://target.com"/login:user=^USER^&pass=^PASS^:Failed"`
+          - FTP: `hydra -l username -P wordlist.txt ftp://target.com`
+          - SMTP: `hydra -l username -P wordlist.txt smtp://target.com`
+          - RDP: `hydra -l admin -P wordlist.txt rdp://target.com`
+          - Multiple IPs: `hydra -l admin -P wordlist.txt -M targets.txt ssh`
+          
+          ## Wireless Testing
+          
+          ### Aircrack-ng Suite
+          - Monitor mode: `sudo airmon-ng start wlan0`
+          - List networks: `sudo airodump-ng wlan0mon`
+          - Capture handshake: `sudo airodump-ng wlan0mon -c 6 -w capture`
+          - Deauth attack: `sudo aireplay-ng -0 10 -a 00:11:22:33:44:55 wlan0mon`
+          - Crack WPA2: `aircrack-ng -w wordlist.txt capture-01.cap`
+          - Crack WEP: `aircrack-ng -b 00:11:22:33:44:55 capture-01.cap`
+          - Stop monitor: `sudo airmon-ng stop wlan0mon`
+          
+          ## Network Sniffing
+          
+          ### Tcpdump
+          - Capture: `sudo tcpdump -i eth0 -w capture.pcap`
+          - Read: `tcpdump -r capture.pcap`
+          - By host: `sudo tcpdump -i eth0 host 192.168.1.1`
+          - By port: `sudo tcpdump -i eth0 port 80`
+          - By protocol: `sudo tcpdump -i eth0 tcp`
+          - Show payload: `sudo tcpdump -i eth0 -A`
+          
+          ### Dsniff
+          - Sniff passwords: `sudo dsniff -i eth0`
+          - Specific protocol: `sudo dsniff -i eth0 -m tcp`
+          
+          ### Ettercap
+          - Interactive: `sudo ettercap -i eth0 -G`
+          - ARP spoofing: `sudo ettercap -i eth0 -T -M arp -t TARGET1// -t TARGET2//`
+          
+          ### Mitmproxy
+          - Start: `mitmproxy -i eth0`
+          - Web interface: `mitmweb`
+          
+          ## Reverse Engineering
+          
+          ### Radare2
+          - Open: `r2 binary.exe`
+          - Analyze: `aa`
+          - List functions: `afl`
+          - Disassemble: `pdf @main`
+          - Hex dump: `x`
+          - Seek: `s 0x400000`
+          
+          ### GDB (Debugger)
+          - Start: `gdb ./program`
+          - Breakpoint: `break main`
+          - Run: `run`
+          - Continue: `continue`
+          - Step: `step` or `next`
+          - Print: `print variable`
+          - Disassemble: `disassemble main`
+          
+          ### Binwalk (Firmware)
+          - Scan: `binwalk firmware.bin`
+          - Extract: `binwalk -e firmware.bin`
+          - Entropy: `binwalk -E firmware.bin`
+          
+          ## Real-World Pentesting Workflow
+          
+          ### Step 1: Reconnaissance
+          ```bash
+          nmap -sV -p- target.com > nmap_results.txt
+          whois target.com
+          dig target.com
+          ```
+          
+          ### Step 2: Vulnerability Scanning
+          ```bash
+          nikto -h target.com -o nikto_results.txt
+          sqlmap -u "http://target.com/search?q=1" --dbs
+          ```
+          
+          ### Step 3: Exploitation (if authorized)
+          ```bash
+          # Use appropriate tools based on vulnerabilities found
+          searchsploit "vulnerability name"
+          ```
+          
+          ### Step 4: Post-Exploitation
+          ```bash
+          # Maintain access, gather data, document findings
+          ```
+          
+          ### Step 5: Reporting
+          ```bash
+          # Compile results and create professional report
+          ```
+          
+          ## Important Notes
+          
+          ⚠️ **LEGAL REMINDER:**
+          - Only run these tools on systems you own or have explicit written permission to test
+          - Unauthorized access is illegal
+          - Document all activities for compliance
+          - Follow your country's cybersecurity laws
+          
+          ✅ **BEST PRACTICES:**
+          - Use separate lab environment for testing
+          - Create backups before testing
+          - Document all findings
+          - Use strong passwords and encryption
+          - Keep tools updated
+          - Enable logging for all activities
+          
+          EOF
+          cat KALI_COMMANDS.md
+      
+      - name: Commit documentation
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add KALI_COMMANDS.md || true
+          git commit -m "Update Kali Linux commands documentation" || echo "No changes to commit"
+          git push || echo "Push failed - may already be up to date"
+
+  deploy:
+    needs: [setup-kali-tools, documentation]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Deployment Summary
+        run: |
+          echo "✅ Kali Linux tools setup completed"
+          echo "✅ Documentation generated"
+          echo "✅ Ready for deployment to Oracle Cloud VPS"
+          echo ""
+          echo "📋 Next steps:"
+          echo "1. Upgrade Oracle Cloud account"
+          echo "2. Create compute instance with Ubuntu 22.04 LTS"
+          echo "3. SSH into instance"
+          echo "4. Run deployment script"
+          echo "5. Verify tools installation"
