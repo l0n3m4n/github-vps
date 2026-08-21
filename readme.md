@@ -450,6 +450,12 @@ If you've used 100% of the included services for GitHub Codespaces storage, a fe
 ![codespace](assets/codespace.png)
 ![billing](assets/billing.png)
 
+### gh billing issue 
+```bash
+❯ gh codespace ssh -c example-couscous-979xjr694r7g1xedf
+error connecting to codespace: error starting codespace: HTTP 402: Usage of this codespace is currently disallowed: There is a billing issue that is preventing you from starting this codespace. (https://api.github.com/user/codespaces/example-couscous-979xjr694r7g1xedf/start)
+```
+
 ## 🔄 Changelog
 ### v1.1.0 - [2024-06-29] 
 - Adjustment:
